@@ -1,17 +1,34 @@
-   <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
-    <div class="row d-flex justify-content-center px-3">
-        
-        <div class="card">
-            <h4 class="text-center text-primary">Temperature</h4>
-            <form class="example" action="" [formGroup]="wheatherForm">
-                <input type="text" placeholder="location" formControlName="location">
-                <button type="btn btn-danger" (click)="submit()"><i class="fa fa-search"></i></button>
-            </form>
-            <h2 class="ml-auto mr-4 mt-3 mb-0">{{data.name}}</h2>
-            <p class="ml-auto mr-4 mb-0 med-font">{{data.main.pressure}}</p>
-            <h1 class="ml-auto mr-4 large-font">{{celsius}}&#176;</h1>
-            <p class="time-font mb-0 ml-4 mt-auto" style="font-size: 30px;">{{currentDate}} <span class="sm-font">AM</span></p>
-            
-        </div>
+<div class="weather-card">
+  <form class="example" action="" [formGroup]="wheatherForm">
+    <div class="search">
+      <input type="search" formControlName="location" placeholder="enter city name" spellcheck="false">
+      <button (click)="submit()">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
+  </form>
+  <div class="weather">
+    <img class="weather-icon"
+      src="https://static.vecteezy.com/system/resources/previews/024/825/182/non_2x/3d-weather-icon-day-with-rain-free-png.png"
+      alt="...">
+    <h1 class="temp">{{celsius}} </h1>
+    <h2 class="city">{{data.name}}</h2>
+    <div class="details">
+      <div style="display: flex;" class="col">
+        <img class="humi" src="https://static-00.iconduck.com/assets.00/humidity-icon-2048x1675-xxsge5os.png">
+        <div class="info">
+        <p>{{data.main.humidity}}%</p>
+        <p>Humidity</p>
+        </div>
+      </div>
+      <div class="col">
+        <img src="https://cdn-icons-png.flaticon.com/512/136/136712.png">
+        <div class="info">
+          <p class="wind">{{data.wind.speed}}</p>
+          <p>Wind Speed</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

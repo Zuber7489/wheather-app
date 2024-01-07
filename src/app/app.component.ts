@@ -11,8 +11,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
  data:any;
 city:string='Burhanpur';
-units:string='imperial';
-currentDate: any;
   constructor(public whether:WheatherService) { }
 
   wheatherForm=new FormGroup({
@@ -21,27 +19,10 @@ currentDate: any;
 
   ngOnInit(){
 this.getWeatherData(this.city);
-this.getCurrentDate();
   }
-
-getCurrentDate(){
-  const date = new Date();
-  this.currentDate = date.toLocaleString('en-US', {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    
-    hour12: true
-  });
-}
-  
-  
   celsius:any;
   getWeatherData(city: string) {
-    this.whether.getdatacity(city, this.units).subscribe(res => {
+    this.whether.getdatacity(city).subscribe(res => {
       this.data = res;
       this.celsius = ((this.data.main.temp - 32) * 5/9).toFixed(2);
       console.log(this.data);
